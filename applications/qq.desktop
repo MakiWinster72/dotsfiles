@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=QQ
-Exec=env GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx fcitx5 linuxqq %U --enable-wayland-ime --ozone-platform-hint=auto
-Terminal=false
-Type=Application
-Icon=qq
-
