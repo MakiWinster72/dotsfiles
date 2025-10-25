@@ -6,7 +6,17 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.enable_wayland = true
+-- -- 禁用 Wayland，强制使用 X11
+-- config.enable_wayland = false
+
+local want_wayland = os.getenv("MY_WEZ_WAYLAND")
+
+if want_wayland == "1" then
+	config.enable_wayland = true
+else
+	config.enable_wayland = false
+end
+
 -- 字体配置
 config.font = wezterm.font_with_fallback({
 	-- "DepartureMono Nerd Font",
@@ -19,8 +29,8 @@ config.font_size = 16
 
 -- 颜色和透明度
 config.color_scheme = "Catppuccin Macchiato"
-config.window_background_opacity = 0.7
-config.text_background_opacity = 0.7
+config.window_background_opacity = 0.5
+config.text_background_opacity = 0.5
 config.window_decorations = "RESIZE"
 
 -- 快捷键说明（Leader键为 ALT + q，按下后2秒内触发后续快捷键）

@@ -7,6 +7,7 @@ if wezterm.config_builder then
 end
 
 config.enable_wayland = true
+
 -- 字体配置
 config.font = wezterm.font_with_fallback({
 	-- "DepartureMono Nerd Font",
@@ -19,8 +20,8 @@ config.font_size = 16
 
 -- 颜色和透明度
 config.color_scheme = "Catppuccin Macchiato"
-config.window_background_opacity = 0.7
-config.text_background_opacity = 0.7
+config.window_background_opacity = 0.8
+config.text_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 
 -- 快捷键说明（Leader键为 ALT + q，按下后2秒内触发后续快捷键）
