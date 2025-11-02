@@ -1,6 +1,7 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
+vim.opt.clipboard = "unnamedplus"
 -- 初始字号
 vim.g.neovide_font_size = 16
 vim.o.guifont = "JetBrains Mono:h" .. vim.g.neovide_font_size .. ":b" -- :b 表示 Bold

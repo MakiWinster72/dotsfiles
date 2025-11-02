@@ -4,6 +4,8 @@
 -- 引入 toggleterm
 -- ~/.config/nvim/lua/config/keymaps.lua
 
+-- vim.keymap.set("v", "<C-c>", '"+y')
+
 -- Rust: <leader> r r
 vim.api.nvim_set_keymap("n", "<leader>rr", "", {
   noremap = true,
