@@ -65,7 +65,7 @@ layout {
   on
   passes 3   // 模糊迭代次数
   radius 1.2 // 模糊半径
-  noise 0.1  // 模糊中加入颗粒噪点
+  noise 0.2  // 模糊中加入颗粒噪点
 }
 
     // Set gaps around windows in logical pixels.
@@ -114,8 +114,8 @@ layout {
     }
     focus-ring {
         width 3
-        active-color "#f38ba8"
-        inactive-color "#7d0d2d"
+        active-color "#f5bde6"
+        inactive-color "#5b6078"
     }
     // 窗口阴影
     shadow {
@@ -258,24 +258,6 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
-// obsidian
-window-rule {
-    match app-id="obsidian" 
-
-    opacity 0.8
-}
-// Wechat
-window-rule {
-    match app-id="wechat" 
-
-    opacity 0.8
-}
-// neovide
-window-rule {
-    match app-id="neovide" 
-
-    opacity 0.8
-}
 // window-rule {
 //     // 此 app-id 正则表达式适用于 xfreerdp3
 //     // 匹配 xfreerdp3（app-id 为 "xfreerdp3"）
@@ -306,8 +288,8 @@ Mod+B { spawn "firefox"; }
 //     spawn-sh "google-chrome-stable --ozone-platform=wayland --proxy-server=\"http://127.0.0.1:7897\"";
 // }
 Mod+E {
-    spawn "nautilus";
-    // spawn "dolphin";
+    // spawn "nautilus";
+    spawn "dolphin";
 }
 
     Mod+Comma hotkey-overlay-title="Settings" { 
@@ -371,7 +353,8 @@ Mod+Shift+C {
     
 // ======= 鼠标操作 =======
 MouseBack { toggle-overview; }
-MouseForward {center-column;}
+MouseMiddle { center-column; }
+MouseForward { set-column-width "90%"; }
 // MouseBack { toggle-window-floating; }
 Mod+MouseForward { close-window; }
 
@@ -394,10 +377,10 @@ Mod+MouseForward { close-window; }
     Mod+Ctrl+End  { move-column-to-last; }
     
     // === Monitor Navigation ===
-    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+G  { focus-monitor-left; }
     //Mod+Ctrl+Down  { focus-monitor-down; }
     //Mod+Ctrl+Up    { focus-monitor-up; }
-    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Semicolon { focus-monitor-right; }
     Mod+Ctrl+H     { focus-monitor-left; }
     Mod+Ctrl+J     { focus-monitor-down; }
     Mod+Ctrl+K     { focus-monitor-up; }
@@ -481,6 +464,7 @@ Mod+MouseForward { close-window; }
     Mod+Ctrl+C { center-visible-columns; }
     
     // === Manual Sizing ===
+    Mod+Alt+R { set-column-width "90%"; }
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }

@@ -18,7 +18,7 @@ fi
 #        Oh My Zsh 核心配置
 # =======================================
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="sammy"
 plugins=(
   git
   zsh-autosuggestions
@@ -82,12 +82,14 @@ alias cat='bat --style=plain --paging=never 2>/dev/null || cat'
 alias grep='grep --color=auto'
 alias cls='clear'
 alias wechat='/opt/wechat/wechat'
+alias nz='nvim ~/.zshrc'
+alias sz='source ~/.zshrc'
 
 # =======================================
 #        Docker 管理命令
 # =======================================
-alias dockersr='sudo systemctl start docker.service docker.socket'
-alias dockerst='docker stop $(docker ps -q) 2>/dev/null; sudo systemctl stop docker.service docker.socket'
+alias dksr='sudo systemctl start docker.service docker.socket'
+alias dkst='docker stop $(docker ps -q) 2>/dev/null; sudo systemctl stop docker.service docker.socket'
 
 # ---------- Paperless ----------
 alias pplsr='docker start paperless-ai paperless-webserver-1 paperless-broker-1 paperless-gotenberg-1 paperless-tika-1 paperless-db-1'
@@ -143,6 +145,7 @@ export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export FREERDP_COMMAND="xfreerdp3"
 export WINAPPS_SRC_DIR="$HOME/.local/bin/winapps-src"
+export BROSWER="/usr/bin/firefox"
 
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -151,10 +154,23 @@ eval "$(zoxide init --cmd cd zsh)"
 # =======================================
 nf() { nvim $(fzf); }
 :q() { exit; }
+ggd() {
+  # 如果目录未挂载则挂载
+  if ! mount | grep -q "$HOME/googleDrive"; then
+    echo "🔗 正在挂载 Google Drive..."
+    rclone mount ggdrive: "$HOME/googleDrive" --vfs-cache-mode full --daemon
+    sleep 2
+  else
+    echo "✅ Google Drive 已挂载"
+  fi
+  cd "$HOME/googleDrive" || return
+}
+
 
 alias ni='niri-session'
 alias nd='neovide'
-alias nib='/usr/local/bin/niri-session --config ~/.config/niri/config_blur.kdl'
+alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
+
 
 # =======================================
 #        加载密钥文件（可选）

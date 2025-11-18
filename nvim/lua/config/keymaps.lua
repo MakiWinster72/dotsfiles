@@ -6,6 +6,29 @@
 
 -- vim.keymap.set("v", "<C-c>", '"+y')
 
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- 启动/继续
+map("n", "<F5>", require("dap").continue, opts)
+-- 暂停/中断
+map("n", "<F6>", require("dap").pause, opts)
+-- 停止调试
+map("n", "<F7>", require("dap").terminate, opts)
+-- 重启
+map("n", "<F8>", require("dap").restart, opts)
+-- 设置断点
+map("n", "<F9>", require("dap").toggle_breakpoint, opts)
+-- 条件断点
+map("n", "<leader>b", function()
+  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, opts)
+-- 单步跳入
+map("n", "<F10>", require("dap").step_into, opts)
+-- 单步跳出
+map("n", "<F11>", require("dap").step_out, opts)
+-- 单步跳过
+map("n", "<F12>", require("dap").step_over, opts)
 -- Rust: <leader> r r
 vim.api.nvim_set_keymap("n", "<leader>rr", "", {
   noremap = true,
@@ -57,25 +80,3 @@ vim.api.nvim_set_keymap("n", "<leader>rC", "", {
   end,
   silent = true,
 })
-
-vim.keymap.set("n", "<F5>", function()
-  require("dap").continue()
-end, { desc = "开始/继续调试" })
-vim.keymap.set("n", "<F10>", function()
-  require("dap").step_over()
-end, { desc = "Step Over" })
-vim.keymap.set("n", "<F11>", function()
-  require("dap").step_into()
-end, { desc = "Step Into" })
-vim.keymap.set("n", "<F12>", function()
-  require("dap").step_out()
-end, { desc = "Step Out" })
-vim.keymap.set("n", "<leader>b", function()
-  require("dap").toggle_breakpoint()
-end, { desc = "切换断点" })
-vim.keymap.set("n", "<leader>B", function()
-  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end, { desc = "条件断点" })
-vim.keymap.set("n", "<leader>dr", function()
-  require("dap").repl.open()
-end, { desc = "打开 REPL" })
