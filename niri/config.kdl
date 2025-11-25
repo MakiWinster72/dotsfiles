@@ -315,7 +315,7 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    Mod+W { toggle-column-tabbed-display; }
+    // Mod+W { toggle-column-tabbed-display; }
     
     // ======= 鼠标操作 =======
     MouseBack { toggle-overview; }
@@ -330,6 +330,10 @@ binds {
     Mod+J     { focus-window-down; }
     Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
+    Mod+A     { focus-column-left; }
+    Mod+D     { focus-column-right; }
+    Mod+W     { focus-workspace-up; }
+    Mod+S     { focus-workspace-down; }
     
     // === Window Movement ===
     Mod+Shift+H     { move-column-left; }

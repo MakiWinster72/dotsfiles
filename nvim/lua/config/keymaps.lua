@@ -6,6 +6,21 @@
 
 -- vim.keymap.set("v", "<C-c>", '"+y')
 
+-- Neovide 字号放大（Ctrl + =）
+vim.keymap.set("n", "<C-=>", function()
+  vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) + 0.1
+end)
+
+-- Neovide 字号缩小（Ctrl + -）
+vim.keymap.set("n", "<C-->", function()
+  vim.g.neovide_scale_factor = (vim.g.neovide_scale_factor or 1.0) - 0.1
+end)
+
+-- 重置字号（Ctrl + 0）
+vim.keymap.set("n", "<C-0>", function()
+  vim.g.neovide_scale_factor = 1.0
+end)
+
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 

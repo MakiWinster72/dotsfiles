@@ -1,20 +1,4 @@
 # =======================================
-#        PYENV 初始化（Python版本管理）
-# =======================================
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
-# =======================================
-#        Powerlevel10k 提示符优化
-# =======================================
-# 必须放在最前以减少启动延迟
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# =======================================
 #        Oh My Zsh 核心配置
 # =======================================
 export ZSH="$HOME/.oh-my-zsh"
@@ -29,7 +13,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # =======================================
-#        补全系统
+#        补全
 # =======================================
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
@@ -51,11 +35,6 @@ bindkey '^N' history-substring-search-down
 #        自动建议与语法高亮
 # =======================================
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-
-# =======================================
-#        Powerlevel10k 配置文件加载
-# =======================================
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # =======================================
 #        文件/文件夹显示增强
@@ -80,10 +59,10 @@ fi
 # =======================================
 alias cat='bat --style=plain --paging=never 2>/dev/null || cat'
 alias grep='grep --color=auto'
-alias cls='clear'
-alias wechat='/opt/wechat/wechat'
-alias nz='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
+alias ag='google-antigravity .'
+alias nd='neovide .'
+alias win='dksr && sleep 2 && wau && sleep 2 && xfreerdp3 /u:maki /p:4722 /v:127.0.0.1:3389 /size:1800x980 /sound:sys:alsa'
+alias zed='zed .'
 
 # =======================================
 #        Docker 管理命令
@@ -98,7 +77,6 @@ alias pplst='docker stop paperless-ai paperless-webserver-1 paperless-broker-1 p
 # ---------- Immich ----------
 alias imsr='docker start immich_server immich_machine_learning immich_postgres immich_redis'
 alias imst='docker stop immich_server immich_machine_learning immich_postgres immich_redis'
-
 
 # ---------- WinApps ----------
 alias wau='docker start WinApps'
@@ -135,44 +113,20 @@ alias img_makislife='mount_aliyun "Aliyun" "aly-images472" "img-makislife"'
 alias resources='mount_aliyun "Aliyun-Shenzhen" "res-shenzhen" "resources"'
 
 # =======================================
-#        Node.js / Cargo / WinApps / zoxide
-# =======================================
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
-export EDITOR="nvim"
-export FREERDP_COMMAND="xfreerdp3"
-export WINAPPS_SRC_DIR="$HOME/.local/bin/winapps-src"
-export BROSWER="/usr/bin/firefox"
-
-eval "$(zoxide init --cmd cd zsh)"
-
-# =======================================
 #        快捷函数
 # =======================================
 nf() { nvim $(fzf); }
 :q() { exit; }
-ggd() {
-  # 如果目录未挂载则挂载
-  if ! mount | grep -q "$HOME/googleDrive"; then
-    echo "🔗 正在挂载 Google Drive..."
-    rclone mount ggdrive: "$HOME/googleDrive" --vfs-cache-mode full --daemon
-    sleep 2
-  else
-    echo "✅ Google Drive 已挂载"
-  fi
-  cd "$HOME/googleDrive" || return
-}
-
 
 alias ni='niri-session'
 alias nd='neovide'
 alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
-
+alias ipa='ip addr show | grep -E "192|172"'
+alias smb='sudo systemctl start smb'
+alias nmb='sudo systemctl start nmb'
 
 # =======================================
 #        加载密钥文件（可选）
 # =======================================
 [ -f ~/.env_keys ] && source ~/.env_keys
+
