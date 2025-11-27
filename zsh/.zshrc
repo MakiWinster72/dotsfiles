@@ -60,7 +60,6 @@ fi
 alias cat='bat --style=plain --paging=never 2>/dev/null || cat'
 alias grep='grep --color=auto'
 alias ag='google-antigravity .'
-alias nd='neovide .'
 alias win='dksr && sleep 2 && wau && sleep 2 && xfreerdp3 /u:maki /p:4722 /v:127.0.0.1:3389 /size:1800x980 /sound:sys:alsa'
 alias zed='zed .'
 
@@ -119,7 +118,7 @@ nf() { nvim $(fzf); }
 :q() { exit; }
 
 alias ni='niri-session'
-alias nd='neovide'
+alias nd='neovide . & { sleep 0.3 && disown; }'
 alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
 alias ipa='ip addr show | grep -E "192|172"'
 alias smb='sudo systemctl start smb'
