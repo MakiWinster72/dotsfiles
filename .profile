@@ -23,20 +23,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
-# Cargo / Local Bin
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
-
-# 编辑器
+export PATH=/home/maki/.local/bin:$PATH
 export EDITOR="nvim"
-
-# FreeRDP
 export FREERDP_COMMAND="xfreerdp3"
-
-# WinApps
 export WINAPPS_SRC_DIR="$HOME/.local/bin/winapps-src"
-
-# 浏览器
 export BROSWER="/usr/bin/firefox"
-
-# zoxide
 eval "$(zoxide init --cmd cd zsh)"

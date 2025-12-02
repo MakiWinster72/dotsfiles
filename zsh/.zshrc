@@ -109,7 +109,7 @@ function mount_aliyun() {
 # 快捷挂载命令
 alias makislife='mount_aliyun "Aliyun" "makislife" "makislife"'
 alias img_makislife='mount_aliyun "Aliyun" "aly-images472" "img-makislife"'
-alias resources='mount_aliyun "Aliyun-Shenzhen" "res-shenzhen" "resources"'
+alias resources='mount_aliyun "Aliyun" "res-guangzhou" "resources"'
 
 # =======================================
 #        快捷函数

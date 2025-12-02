@@ -328,9 +328,9 @@ binds {
     Mod+MouseForward { close-window; }
 
     // === Focus Navigation ===
-    Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
     Mod+K     { focus-window-up; }
+    Mod+H     { focus-column-left; }
     Mod+L     { focus-column-right; }
     Mod+A     { focus-column-left; }
     Mod+D     { focus-column-right; }
@@ -378,7 +378,7 @@ binds {
     Mod+Ctrl+Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
-    
+
     // === Move Workspaces ===
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
@@ -438,8 +438,6 @@ binds {
     
     // === Manual Sizing ===
     // F9 { set-column-width "90%"; }
-    Mod+1 { set-column-width "70%"; }
-    Mod+2 { set-column-width "90%"; }
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
