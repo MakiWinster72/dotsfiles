@@ -62,7 +62,7 @@ input {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 12
     background-color "transparent"
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -106,7 +106,7 @@ layout {
         urgent-color   "#cc4444"      // Softer red
     }
     focus-ring {
-        width 3
+        width 0
         active-color "#f5bde6"
         inactive-color "#5b6078"
     }
@@ -164,7 +164,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
 
-    slowdown 3.0
+    // slowdown 3.0
 
     workspace-switch {
         spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
@@ -193,7 +193,7 @@ animations {
         duration-ms 200
     }
     overview-open-close {
-        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+        spring damping-ratio=1.85 stiffness=800 epsilon=0.0001
     }
 }
 // Window rules let you adjust behavior for individual windows.
@@ -211,7 +211,7 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
-    geometry-corner-radius 12
+    geometry-corner-radius 13
     clip-to-geometry true
 }
 window-rule {
@@ -248,7 +248,7 @@ window-rule {
     open-floating true
 }
 window-rule {
-    geometry-corner-radius 12
+    // geometry-corner-radius 12
     clip-to-geometry true
 }
 
@@ -306,7 +306,8 @@ binds {
     
     Mod+Shift+C {
         // spawn-sh "grim -g \"$(slurp $SLURP_ARGS)\" /tmp/tmp.png && tesseract /tmp/tmp.png - | wl-copy && rm /tmp/tmp.png";
-        spawn-sh "grim -g \"$(slurp $SLURP_ARGS)\" /tmp/tmp.png && tesseract /tmp/tmp.png - -l chi_sim+eng --oem 3 | wl-copy && rm /tmp/tmp.png"
+        // spawn-sh "grim -g \"$(slurp $SLURP_ARGS)\" /tmp/tmp.png && tesseract /tmp/tmp.png - -l chi_sim+eng --oem 3 | wl-copy && rm /tmp/tmp.png"
+        spawn-sh "~/project/funnySH/ocr.sh"
     }
     
     // === Window Management ===
@@ -322,8 +323,8 @@ binds {
     // ======= 鼠标操作 =======
     MouseBack { toggle-overview; }
     MouseMiddle { center-column; }
-    // MouseForward {center-column;}
-    MouseForward { set-column-width "90%"; }
+    // MouseForward { set-column-width "90%"; }
+    MouseForward { spawn-sh "niri msg action set-column-width \"90%\" && niri msg action center-column"; }
     // MouseBack { toggle-window-floating; }
     Mod+MouseForward { close-window; }
 

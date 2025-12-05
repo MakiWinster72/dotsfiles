@@ -5,6 +5,8 @@ export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 # export FCITX5_USE_WAYLAND=1 # 这是必要的，用于支持 Wayland 输入法
 
+export NO_PROXY=maki,localhost,master,192.168.1.0/24,172.20.10.0/28
+
 # =======================================
 #        环境变量配置
 # =======================================

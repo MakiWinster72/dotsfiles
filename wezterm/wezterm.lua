@@ -11,7 +11,8 @@ config.enable_wayland = true
 config.font = wezterm.font_with_fallback({
 	-- "DepartureMono Nerd Font",
 	-- "Fusion Pixel 12px M zh_hans",
-	{ family = "JetBrains Mono Nerd Font", weight = "Bold" },
+	{ family = "Recursive Mono Linear Static" },
+	-- { family = "JetBrains Mono Nerd Font", weight = "Bold" },
 	-- "HarmonyOS Sans SC",
 	{ family = "HarmonyOS Sans SC", weight = "Bold" },
 })
@@ -19,9 +20,9 @@ config.font_size = 16
 
 -- 颜色和透明度
 config.color_scheme = "Catppuccin Macchiato"
-config.window_background_opacity = 0.7
-config.text_background_opacity = 0.7
-config.window_decorations = "RESIZE"
+-- config.window_background_opacity = 0.7
+-- config.text_background_opacity = 0.7
+-- config.window_decorations = "RESIZE"
 
 -- 快捷键说明（Leader键为 ALT + q，按下后2秒内触发后续快捷键）
 -- 标签页管理
