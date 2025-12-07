@@ -2,7 +2,8 @@
 #        Oh My Zsh 核心配置
 # =======================================
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="af-magic"
+# ZSH_THEME="af-magic"
+ZSH_THEME="juanghurtado"
 plugins=(
   git
   zsh-autosuggestions
