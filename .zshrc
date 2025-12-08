@@ -3,7 +3,7 @@
 # =======================================
 export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="af-magic"
-ZSH_THEME="juanghurtado"
+ZSH_THEME="jtriley"
 plugins=(
   git
   zsh-autosuggestions

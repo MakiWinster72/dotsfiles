@@ -315,7 +315,7 @@ binds {
     Mod+Q repeat=false { close-window; }
     // Mod+F { maximize-column; }
     // Mod+F { set-column-width "90%"; }
-    Mod+F { spawn-sh "niri msg action set-column-width \"90%\" && niri msg action center-column"; }
+    Mod+F { spawn-sh "niri msg action set-column-width \"90%\" && sleep 0.001 && niri msg action center-column"; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
