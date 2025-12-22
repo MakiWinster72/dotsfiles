@@ -6,12 +6,12 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.enable_wayland = true
+config.enable_wayland = false
 -- 字体配置
 config.font = wezterm.font_with_fallback({
 	-- "DepartureMono Nerd Font",
 	-- "Fusion Pixel 12px M zh_hans",
-	{ family = "Recursive Mono Linear Static" },
+	{ family = "Recursive Mono Casual Static" },
 	-- { family = "JetBrains Mono Nerd Font", weight = "Bold" },
 	-- "HarmonyOS Sans SC",
 	{ family = "HarmonyOS Sans SC", weight = "Bold" },

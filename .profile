@@ -1,5 +1,5 @@
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
@@ -11,7 +11,7 @@ export NO_PROXY=maki,localhost,master,192.168.1.0/24,172.20.10.0/28
 #        环境变量配置
 # =======================================
 # JAVA
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk/
+export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
 export PATH=$JAVA_HOME/bin:$PATH
 
 # PYENV
@@ -31,4 +31,6 @@ export EDITOR="nvim"
 export FREERDP_COMMAND="xfreerdp3"
 export WINAPPS_SRC_DIR="$HOME/.local/bin/winapps-src"
 export BROSWER="/usr/bin/firefox"
-eval "$(zoxide init --cmd cd zsh)"
+XDG_MENU_PREFIX=arch- kbuildsycoca6
+export GOPROXY="${GOPROXY:-https://goproxy.cn,direct}"
+export GOSUMDB="${GOSUMDB:-off}"

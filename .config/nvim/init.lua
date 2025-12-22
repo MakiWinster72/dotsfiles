@@ -20,7 +20,7 @@ vim.keymap.set("n", "<C-0>", function()
 end)
 
 -- 设置字体为 Recursive Mono Linear Static，初始字号 14
-vim.o.guifont = "Recursive Mono Linear Static:h14"
+vim.o.guifont = "Hurmit Nerd Font Mono:h16"
 
 if vim.env.SSH_TTY then
   local osc52 = require("vim.ui.clipboard.osc52")
