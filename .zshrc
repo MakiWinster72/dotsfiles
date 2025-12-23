@@ -188,6 +188,7 @@ alias nd='neovide'
 alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
 alias ipa='ip addr show | grep -E "192|172"'
 alias lh='ls -lh'
+alias t='tmux'
 
 # ---------------------------------------
 # 加载敏感密钥
