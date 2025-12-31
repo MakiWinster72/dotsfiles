@@ -1,0 +1,8 @@
+[url "https://gh-proxy.com/github.com/"]
+	insteadOf = https://github.com/
+[user]
+	name = MakiWinster
+	email = makiiiiiiiho@gmail.com
+[init]
+	defaultBranch = main
+
