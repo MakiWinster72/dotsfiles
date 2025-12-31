@@ -14,7 +14,7 @@ output "eDP-1" {
     position x=0 y=0
 }
 
-output "HDMI-A-1" {
+output "DP-1" {
     mode "1920x1080@75.340"
     scale 1
     transform "normal"
@@ -130,25 +130,23 @@ cursor {
     hide-when-typing
     hide-after-inactive-ms 1000
 }
-// 添加类似这样的行以在启动时生成进程
-// 请注意，作为会话运行的 niri 支持 xdg-desktop-autostart，
-// 使用它可能更方便
-// 查看下面的绑定部分以获取更多生成示例
-// 这行启动 waybar，一个常用的 Wayland 合成器状态栏
+
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "clash-verge"
 spawn-at-startup "dms" "run"
 spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "XDG_MENU_PREFIX=arch- kbuildsycoca6"
 
 environment {
   _JAVA_AWT_WM_NONREPARENTING "1"
   XDG_CURRENT_DESKTOP "niri"
-  // ALL_PROXY "http://127.0.0.1:7897"
+  ALL_PROXY "http://127.0.0.1:7897"
   QT_QPA_PLATFORM "wayland"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   QT_QPA_PLATFORMTHEME "gtk3"
   QT_QPA_PLATFORMTHEME_QT6 "gtk3"
   TERMINAL "kitty"
+  EDITOR "nvim"
 }
 hotkey-overlay {
     skip-at-startup
@@ -158,7 +156,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations {
 
-    // slowdown 0.2
+    // slowdown 1
     //
 
     workspace-switch {
@@ -237,6 +235,10 @@ window-rule {
     opacity 0.8
 }
 window-rule {
+    match app-id="zen"
+    opacity 1.0
+}
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
@@ -276,7 +278,7 @@ binds {
     Mod+M hotkey-overlay-title="任务管理器" {
         spawn "dms" "ipc" "call" "processlist" "toggle";
     }
-    Mod+B { spawn "firefox"; }
+    Mod+B { spawn "zen-browser"; }
     // Mod+B {
     //     spawn-sh "google-chrome-stable --ozone-platform=wayland --proxy-server=\"http://127.0.0.1:7897\"";
     // }
@@ -338,6 +340,8 @@ binds {
     Mod+D     { focus-column-right; }
     Mod+W     { focus-workspace-up; }
     Mod+S     { focus-workspace-down; }
+    Mod+Ctrl+A     { focus-monitor-left; }
+    Mod+Ctrl+D     { focus-monitor-right; }
 
     // === 窗口移动 ===
     Mod+Shift+A     { move-column-left; }

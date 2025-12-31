@@ -6,9 +6,30 @@
 
 -- vim.keymap.set("v", "<C-c>", '"+y')
 
+local function smart_move(direction, tmux_cmd)
+  local curwin = vim.api.nvim_get_current_win()
+  vim.cmd("wincmd " .. direction)
+  if curwin == vim.api.nvim_get_current_win() then
+    -- 没有切换到 Vim split，调用 tmux 选择 pane
+    os.execute("tmux select-pane " .. tmux_cmd)
+  end
+end
+
+vim.keymap.set("n", "<C-h>", function()
+  smart_move("h", "-L")
+end)
+vim.keymap.set("n", "<C-j>", function()
+  smart_move("j", "-D")
+end)
+vim.keymap.set("n", "<C-k>", function()
+  smart_move("k", "-U")
+end)
+vim.keymap.set("n", "<C-l>", function()
+  smart_move("l", "-R")
+end)
+
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-
 -- 启动/继续
 map("n", "<F5>", require("dap").continue, opts)
 -- 暂停/中断

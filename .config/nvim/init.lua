@@ -1,5 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+require("plugins.tmux")
 
 -- 默认字体大小
 vim.g.neovide_scale_factor = 1.0
@@ -19,8 +20,8 @@ vim.keymap.set("n", "<C-0>", function()
   vim.g.neovide_scale_factor = 1.0
 end)
 
--- 设置字体为 Recursive Mono Linear Static，初始字号 14
-vim.o.guifont = "Hurmit Nerd Font Mono:h16"
+-- 设置字体
+vim.o.guifont = "Recursive Mono Casual Static:h18"
 
 if vim.env.SSH_TTY then
   local osc52 = require("vim.ui.clipboard.osc52")
@@ -43,3 +44,5 @@ if vim.env.SSH_TTY then
 
   vim.opt.clipboard = "unnamedplus"
 end
+
+vim.treesitter.language.register("json", "jsonc")
