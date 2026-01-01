@@ -1,6 +1,5 @@
 [source.crates-io]
-replace-with = 'tuna'
+replace-with = "aliyun"
 
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
-
+[source.aliyun]
+registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"

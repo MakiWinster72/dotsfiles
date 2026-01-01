@@ -83,10 +83,6 @@ if [ -f "${HOME}/.fzf.zsh" ]; then
   source "${HOME}/.fzf.zsh"
 fi
 
-# ---------------------------------------
-# 常用别名
-# ---------------------------------------
-
 if command -v grep >/dev/null 2>&1; then
   alias grep='grep --color=auto'
 fi
@@ -189,6 +185,9 @@ alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
 alias ipa='ip addr show | grep -E "192|172"'
 alias lh='ls -lh'
 alias t='tmux'
+alias li="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
+
+alias dk="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 
 # ---------------------------------------
 # 加载敏感密钥
