@@ -285,6 +285,7 @@ binds {
     Mod+E {
         // spawn "nautilus";
         spawn "dolphin";
+        // spawn "krusader";
     }
 
     // Mod+Comma hotkey-overlay-title="设置" {

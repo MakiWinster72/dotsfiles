@@ -55,14 +55,10 @@ if typeset -f history-substring-search-up >/dev/null 2>&1; then
   bindkey '^N' history-substring-search-down
 fi
 
-# ---------------------------------------
 # 自动建议与语法高亮
-# ---------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="${ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE:-fg=8}"
 
-# ---------------------------------------
 # 外观 / ls 显示增强
-# ---------------------------------------
 if command -v lsd >/dev/null 2>&1; then
   alias ls='lsd --group-dirs=first --icons'
   alias ll='lsd -lh --group-dirs=first --icons'
@@ -76,9 +72,7 @@ else
   alias la='ls -lha --group-directories-first 2>/dev/null || ls -lha'
 fi
 
-# ---------------------------------------
 # FZF
-# ---------------------------------------
 if [ -f "${HOME}/.fzf.zsh" ]; then
   source "${HOME}/.fzf.zsh"
 fi
@@ -89,9 +83,6 @@ fi
 
 alias win='dksr && sleep 2 && wau && sleep 2 && xfreerdp3 /u:maki /p:4722 /v:127.0.0.1:3389 /size:1800x980 /sound:sys:alsa'
 
-# ---------------------------------------
-# Docker 管理命令
-# ---------------------------------------
 # 启动 Docker 服务
 dksr() {
   if command -v systemctl >/dev/null 2>&1; then
@@ -186,22 +177,18 @@ alias ipa='ip addr show | grep -E "192|172"'
 alias lh='ls -lh'
 alias t='tmux'
 alias li="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
-
 alias dk="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 
-# ---------------------------------------
-# 加载敏感密钥
-# ---------------------------------------
+# 加载密钥
 if [ -f "${HOME}/.env_keys" ]; then
   source "${HOME}/.env_keys"
 fi
 
-# ---------------------------------------
-# 其它：zoxide、Go 代理等
-# ---------------------------------------
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 
-source ~/.profile
-export PATH="$HOME/.npm-global/bin:$PATH"
+# 在缓存行中打开输入
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
