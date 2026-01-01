@@ -205,3 +205,4 @@ if command -v zoxide >/dev/null 2>&1; then
 fi
 
 source ~/.profile
+export PATH="$HOME/.npm-global/bin:$PATH"
