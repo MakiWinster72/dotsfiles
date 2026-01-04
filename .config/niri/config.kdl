@@ -312,7 +312,6 @@ binds {
         spawn-sh "~/project/funnySH/ocr.sh"
     }
 
-    Mod+1 { switch-focus-between-floating-and-tiling; }
 
     // === 窗口管理 ===
     Mod+Q repeat=false { close-window; }

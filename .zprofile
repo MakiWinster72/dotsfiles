@@ -43,3 +43,7 @@ export http_proxy="http://127.0.0.1:7897"
 export https_proxy="http://127.0.0.1:7897"
 export all_proxy="socks5://127.0.0.1:7897"
 export PATH="$HOME/.npm-global/bin:$PATH"
+export MANPAGER="sh -c 'col -bx | bat -l man'"
+
+# opencode
+export PATH=/home/maki/.opencode/bin:$PATH

@@ -9,3 +9,5 @@
 ; 	proxy = http://127.0.0.1:7897
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main

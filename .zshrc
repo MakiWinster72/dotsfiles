@@ -14,14 +14,10 @@ if [ -d "$ZSH" ]; then
     zsh-history-substring-search
     fzf
   )
-  # 以非交互性方式防止脚本错误影响 shell 初始化
-  # shellcheck disable=SC1090
   source "$ZSH/oh-my-zsh.sh"
 fi
 
-# ---------------------------------------
-# 补全（completion）
-# ---------------------------------------
+# 补全
 autoload -Uz compinit
 if compinit 2>/dev/null; then
   :
@@ -36,9 +32,7 @@ fi
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# ---------------------------------------
-# 历史记录（history）
-# ---------------------------------------
+# 历史记录
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -81,7 +75,6 @@ if command -v grep >/dev/null 2>&1; then
   alias grep='grep --color=auto'
 fi
 
-alias win='dksr && sleep 2 && wau && sleep 2 && xfreerdp3 /u:maki /p:4722 /v:127.0.0.1:3389 /size:1800x980 /sound:sys:alsa'
 
 # 启动 Docker 服务
 dksr() {
@@ -161,23 +154,22 @@ mount_aliyun() {
   cd "$MOUNT_POINT" 2>/dev/null || true
 }
 
-# 快捷挂载命令
+# 挂载命令
 alias makislife='mount_aliyun "Aliyun" "makislife" "makislife"'
 alias img_makislife='mount_aliyun "Aliyun" "aly-images472" "img-makislife"'
 alias resources='mount_aliyun "Aliyun" "res-guangzhou" "resources"'
-alias dolphin='export ALL_PROXY= && dolphin'
 
 
 :q() { exit; }
 
 alias ni='niri-session'
 alias nd='neovide'
-alias nib='~/.local/bin/niri --config ~/.config/niri/config_blur.kdl'
 alias ipa='ip addr show | grep -E "192|172"'
 alias lh='ls -lh'
 alias t='tmux'
 alias li="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
 alias dk="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
+alias dolphin='export ALL_PROXY= && dolphin'
 
 # 加载密钥
 if [ -f "${HOME}/.env_keys" ]; then
@@ -192,3 +184,22 @@ fi
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+
+# 切换目录的时候自动ls
+chpwd() {
+  ls
+}
+
+# 定义后缀操作
+alias -s md='glow -p'
+alias -s mov="open"
+alias -s png="open"
+alias -s mp4="open"
+alias -s go="$EDITOR"
+alias -s js="$EDITOR"
+alias -s ts="$EDITOR"
+alias -s yaml="bat -l yaml"
+alias -s json="jless"
+
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+
