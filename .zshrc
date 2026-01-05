@@ -170,6 +170,7 @@ alias t='tmux'
 alias li="gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'"
 alias dk="gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'"
 alias dolphin='export ALL_PROXY= && dolphin'
+alias web='browser-sync start --server --files "**/*.*"'
 
 # 加载密钥
 if [ -f "${HOME}/.env_keys" ]; then
