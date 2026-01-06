@@ -6,7 +6,7 @@ umask 022
 
 # 仅在存在 oh-my-zsh 时启用
 if [ -d "$ZSH" ]; then
-  ZSH_THEME="${ZSH_THEME:-jtriley}"
+ZSH_THEME="refined" # set by `omz`
   plugins=(
     git
     zsh-autosuggestions
