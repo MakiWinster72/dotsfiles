@@ -322,6 +322,7 @@ binds {
     Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     // Mod+W { toggle-column-tabbed-display; }
+    Mod+Shift+W { toggle-column-tabbed-display; }
 
     // ======= 鼠标操作 =======
     MouseBack { toggle-overview; }
@@ -376,6 +377,10 @@ binds {
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+A     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+S     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+W     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+D     { move-column-to-monitor-right; }
 
     // === 工作区导航 ===
     Mod+Page_Down      { focus-workspace-down; }
