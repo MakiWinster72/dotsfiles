@@ -158,6 +158,7 @@ mount_aliyun() {
 alias makislife='mount_aliyun "Aliyun" "makislife" "makislife"'
 alias img_makislife='mount_aliyun "Aliyun" "aly-images472" "img-makislife"'
 alias resources='mount_aliyun "Aliyun" "res-guangzhou" "resources"'
+alias blog='mount_aliyun "Aliyun" "blog-makislife" "blog"'
 
 
 :q() { exit; }

@@ -1,7 +1,12 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 require("plugins.tmux")
-
+vim.g.neovide_opacity = 0.95
+vim.g.neovide_floating_blur_amount_x = 6.0
+vim.g.neovide_floating_blur_amount_y = 6.0
+vim.g.neovide_cursor_vfx_mode = "railgun"
+vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+vim.g.neovide_cursor_vfx_particle_density = 8.0
 -- 默认字体大小
 vim.g.neovide_scale_factor = 1.0
 
