@@ -204,4 +204,8 @@ alias -s yaml="bat -l yaml"
 alias -s json="jless"
 
 bindkey -s '^Xgc' 'git commit -m ""\C-b'
-
+bindkey -s '^Xgs' 'git status'
+bindkey -s '^Xga' 'git add '
+bindkey -s '^Xi' 'sudo pacman -S '
+bindkey -s '^Xu' 'sudo pacman -Rns '
+bindkey -s '^Xs' 'sudo pacman -Qs '
