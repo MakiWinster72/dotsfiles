@@ -1,4 +1,5 @@
 export QT_QPA_PLATFORMTHEME="qt6ct"
+export ICON_THEME=Papirus
 # export XDG_CURRENT_DESKTOP=KDE
 export KDE_SESSION_VERSION=6
 
@@ -38,9 +39,9 @@ export BROSWER="/usr/bin/firefox"
 # XDG_MENU_PREFIX=arch- kbuildsycoca6
 export GOPROXY="${GOPROXY:-https://goproxy.cn,direct}"
 export GOSUMDB="${GOSUMDB:-off}"
-export http_proxy="http://127.0.0.1:7897"
-export https_proxy="http://127.0.0.1:7897"
-export all_proxy="socks5://127.0.0.1:7897"
+# export http_proxy="http://127.0.0.1:7897"
+# export https_proxy="http://127.0.0.1:7897"
+# export all_proxy="socks5://127.0.0.1:7897"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export MANPAGER="sh -c 'col -bx | bat -l man'"
 
