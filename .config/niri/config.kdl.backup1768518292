@@ -239,6 +239,10 @@ window-rule {
     opacity 1.0
 }
 window-rule {
+  match app-id="kitty"
+    opacity 0.8
+}
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
@@ -504,5 +508,3 @@ binds {
 debug {
     honor-xdg-activation-with-invalid-serial
 }
-
-include "dms/cursor.kdl"

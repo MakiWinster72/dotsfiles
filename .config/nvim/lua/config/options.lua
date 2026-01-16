@@ -4,6 +4,7 @@
 -- 光标十字线
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+-- vim.cmd.colorscheme("base16-dracula")
 
 -- vim.opt.clipboard = "unnamedplus"
 
