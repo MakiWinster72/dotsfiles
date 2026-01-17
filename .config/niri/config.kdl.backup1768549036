@@ -1,0 +1,508 @@
+// 此配置文件使用 KDL 格式: https://kdl.dev
+// "/-" 注释掉后面的节点
+// 查看 wiki 获取完整的配置说明:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+config-notification {
+    disable-failed
+}
+// 来自现有配置的输出设置
+output "eDP-1" {
+    mode "1920x1080@165.004"
+    // mode "1920x1080@60.004"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+output "DP-1" {
+    mode "1920x1080@75.340"
+    scale 1
+    transform "normal"
+    position x=-1920 y=0
+}
+
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// 输入设备配置
+// 在 wiki 上查找完整的选项列表:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+        }
+        numlock
+        repeat-delay 300
+        repeat-rate 30
+    }
+    touchpad {
+      tap
+      natural-scroll
+      scroll-method "two-finger"
+    }
+    mouse {
+    }
+    trackpoint {
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse
+}
+// 您可以通过输出名称配置显示器，可以通过在 niri 实例中运行 `niri msg outputs` 找到名称
+// 内置笔记本电脑显示器通常称为 "eDP-1"
+// 在 wiki 上查找更多信息:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+// 记得通过删除 "/-" 来取消注释节点!
+
+// 影响窗口位置和大小的设置
+// 在 wiki 上查找更多信息:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+layout {
+    // 设置窗口周围的间隙（逻辑像素）
+    gaps 12
+    background-color "transparent"
+    // 何时在改变焦点时居中列，选项有:
+    // - "never"，默认行为，聚焦屏幕外的列将保持在屏幕左侧或右侧边缘
+    // - "always"，聚焦的列将始终居中
+    // - "on-overflow"，如果列与先前聚焦的列一起不适合屏幕，聚焦时将居中
+    center-focused-column "never"
+    // 您可以自定义 "switch-preset-column-width" (Mod+R) 切换的宽度预设
+    preset-column-widths {
+        // proportion 将宽度设置为输出宽度的比例，考虑间隙
+        // 例如，您可以在输出上完美放置四个 "proportion 0.25" 大小的窗口
+        // 默认预设宽度是输出的 1/3、1/2 和 2/3
+        proportion 0.5
+        // fixed 以逻辑像素精确设置宽度
+        // fixed 1920
+    }
+    // 您也可以自定义 "switch-preset-window-height" (Mod+Shift+R) 切换的高度预设
+    // preset-window-heights { }
+    // 您可以更改新窗口的默认宽度
+    default-column-width { proportion 0.5; }
+    // 如果括号留空，窗口本身将决定其初始宽度
+    // default-column-width {}
+    // 默认情况下，焦点环和边框作为实心背景矩形在窗口后面渲染
+    // 也就是说，它们会通过半透明窗口显示出来
+    // 这是因为使用客户端装饰的窗口可以具有任意形状
+    //
+    // 如果您不喜欢这样，您应该取消下面的 `prefer-no-csd` 注释
+    // Niri 将在同意省略其客户端装饰的窗口周围绘制焦点环和边框
+    //
+    // 或者，您可以使用名为 `draw-border-with-background` 的窗口规则覆盖它
+    border {
+        off
+        width 4
+        active-color   "#707070"      // 中性灰色
+        inactive-color "#d0d0d0"      // 浅灰色
+        urgent-color   "#cc4444"      // 柔和的红色
+    }
+    focus-ring {
+        width 2
+        active-color "#f5bde6"
+        inactive-color "#5b6078"
+    }
+    // 窗口阴影
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=20 y=20
+        color "#0007"
+    }
+    struts {
+    }
+}
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 48
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "clash-verge"
+spawn-at-startup "dms" "run"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup "XDG_MENU_PREFIX=arch- kbuildsycoca6"
+
+environment {
+  _JAVA_AWT_WM_NONREPARENTING "1"
+  XDG_CURRENT_DESKTOP "niri"
+  ALL_PROXY "http://127.0.0.1:7897"
+  QT_QPA_PLATFORM "wayland"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+  TERMINAL "kitty"
+  EDITOR "nvim"
+}
+hotkey-overlay {
+    skip-at-startup
+}
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+
+    // slowdown 1
+    //
+
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 300
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 300
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+    }
+    overview-open-close {
+        spring damping-ratio=1.85 stiffness=800 epsilon=0.0001
+    }
+}
+// 窗口规则允许您调整单个窗口的行为
+// 在 wiki 上查找更多信息:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// 通过设置空的 default-column-width 来解决 WezTerm 的初始配置错误
+window-rule {
+    // 这个正则表达式特意做得尽可能具体，
+    // 因为这是默认配置，我们不希望有误报
+    // 如果您愿意，可以只使用 app-id="wezterm"
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 13
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    default-column-width { proportion 0.5; }
+    open-floating false
+}
+window-rule {
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id=r#"^steam$"#
+    match app-id=r#"^xdg-desktop-portal$"#
+    open-floating true
+}
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    draw-border-with-background false
+}
+window-rule {
+    match is-active=false
+    opacity 0.8
+}
+window-rule {
+    match app-id="zen"
+    opacity 1.0
+}
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="zoom"
+    open-floating true
+}
+window-rule {
+    match app-id="firefox"
+    opacity 1.0
+}
+window-rule {
+    // geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    // 此 app-id 正则表达式适用于 xfreerdp3
+    // 匹配 xfreerdp3（app-id 为 "xfreerdp3"）
+    match app-id=r#"xfreerdp3$"# title="^.*$"
+    open-floating true
+}
+
+binds {
+    // === 系统与概览 ===
+    Mod+O { spawn "niri" "msg" "action" "toggle-overview"; }
+    Alt+0 { spawn "niri" "msg" "action" "toggle-overview"; }
+    Mod+Tab repeat=false { toggle-overview; }
+    // Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // === 应用程序启动器 ===
+    Mod+T hotkey-overlay-title="打开终端" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="打开终端" { spawn "wezterm"; }
+    Alt+Space hotkey-overlay-title="应用程序启动器" {
+        spawn "dms" "ipc" "call" "spotlight" "toggle";
+    }
+    Mod+V hotkey-overlay-title="剪贴板管理器" {
+        spawn "dms" "ipc" "call" "clipboard" "toggle";
+    }
+    Mod+M hotkey-overlay-title="任务管理器" {
+        spawn "dms" "ipc" "call" "processlist" "toggle";
+    }
+    Mod+B { spawn "zen-browser"; }
+    // Mod+B {
+    //     spawn-sh "google-chrome-stable --ozone-platform=wayland --proxy-server=\"http://127.0.0.1:7897\"";
+    // }
+    Mod+E {
+        // spawn "nautilus";
+        spawn "dolphin";
+        // spawn "krusader";
+    }
+
+    // Mod+Comma hotkey-overlay-title="设置" {
+    //     spawn "dms" "ipc" "call" "settings" "toggle";
+    // }
+    Mod+Y hotkey-overlay-title="浏览壁纸" {
+        spawn "dms" "ipc" "call" "dankdash" "wallpaper";
+    }
+    Mod+Shift+N hotkey-overlay-title="通知中心" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+N hotkey-overlay-title="记事本" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+
+    // === 安全 ===
+    Mod+Alt+L hotkey-overlay-title="锁定屏幕" {
+        spawn "dms" "ipc" "call" "lock" "lock";
+    }
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete hotkey-overlay-title="任务管理器" {
+        spawn "dms" "ipc" "call" "processlist" "toggle";
+    }
+
+    Mod+Shift+C {
+        // spawn-sh "grim -g \"$(slurp $SLURP_ARGS)\" /tmp/tmp.png && tesseract /tmp/tmp.png - | wl-copy && rm /tmp/tmp.png";
+        // spawn-sh "grim -g \"$(slurp $SLURP_ARGS)\" /tmp/tmp.png && tesseract /tmp/tmp.png - -l chi_sim+eng --oem 3 | wl-copy && rm /tmp/tmp.png"
+        spawn-sh "~/project/funnySH/ocr.sh"
+    }
+
+
+    // === 窗口管理 ===
+    Mod+Q repeat=false { close-window; }
+    // Mod+F { maximize-column; }
+    // Mod+F { set-column-width "90%"; }
+    Mod+F { spawn-sh "niri msg action set-column-width \"90%\" && sleep 0.1 && niri msg action center-column"; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+T { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    // Mod+W { toggle-column-tabbed-display; }
+    Mod+Shift+W { toggle-column-tabbed-display; }
+
+    // ======= 鼠标操作 =======
+    MouseBack { toggle-overview; }
+    // MouseMiddle { center-column; }
+    // MouseForward { set-column-width "90%"; }
+    MouseForward { spawn-sh "niri msg action set-column-width \"90%\" && niri msg action center-column"; }
+    // MouseBack { toggle-window-floating; }
+    Mod+MouseForward { close-window; }
+
+    // === 焦点导航 ===
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
+    Mod+A     { focus-column-left; }
+    Mod+D     { focus-column-right; }
+    Mod+W     { focus-workspace-up; }
+    Mod+S     { focus-workspace-down; }
+    Mod+Ctrl+A     { focus-monitor-left; }
+    Mod+Ctrl+D     { focus-monitor-right; }
+
+    // === 窗口移动 ===
+    Mod+Shift+A     { move-column-left; }
+    Mod+Shift+D     { move-column-right; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    // === 列导航 ===
+    // Mod+Home { focus-column-first; }
+    // Mod+End  { focus-column-last; }
+    // Mod+Ctrl+Home { move-column-to-first; }
+    // Mod+Ctrl+End  { move-column-to-last; }
+
+    // === 显示器导航 ===
+    // Mod+G  { focus-monitor-left; }
+    //Mod+Ctrl+Down  { focus-monitor-down; }
+    //Mod+Ctrl+Up    { focus-monitor-up; }
+    // Mod+Semicolon { focus-monitor-right; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+J     { focus-monitor-down; }
+    Mod+Ctrl+K     { focus-monitor-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
+
+    // === 移动到显示器 ===
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+A     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+S     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+W     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+D     { move-column-to-monitor-right; }
+
+    // === 工作区导航 ===
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    // === 移动工作区 ===
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // === 鼠标滚轮导航 ===
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // === 编号工作区 ===
+    // Mod+1 { focus-workspace 1; }
+    // Mod+2 { focus-workspace 2; }
+    // Mod+3 { focus-workspace 3; }
+    // Mod+4 { focus-workspace 4; }
+    // Mod+5 { focus-workspace 5; }
+    // Mod+6 { focus-workspace 6; }
+    // Mod+7 { focus-workspace 7; }
+    // Mod+8 { focus-workspace 8; }
+    // Mod+9 { focus-workspace 9; }
+
+    // === 移动到编号工作区 ===
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // === 列管理 ===
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Period { expel-window-from-column; }
+
+    // === 大小调整与布局 ===
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // === 手动调整大小 ===
+    // F9 { set-column-width "90%"; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // === 截图 ===
+    XF86Launch1 { screenshot; }
+    Ctrl+XF86Launch1 { screenshot-screen; }
+    Alt+XF86Launch1 { screenshot-window; }
+    // Mod+Shift+S hotkey-overlay-title="截屏" { screenshot; }
+    Mod+Shift+S {
+    spawn-sh "grim -g \"$(slurp)\" -t ppm - | satty --filename - ";
+    }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // === 系统控制 ===
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+P { power-off-monitors; }
+
+    // === 音频控制 ===
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "increment" "3";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "decrement" "3";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "mute";
+    }
+    XF86AudioMicMute allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "micmute";
+    }
+
+    XF86KbdBrightnessUp allow-when-locked=true {
+        spawn "kbdbrite.sh" "up";
+    }
+    XF86KbdBrightnessDown allow-when-locked=true {
+        spawn "kbdbrite.sh" "down";
+    }
+    // === 亮度控制 ===
+    XF86MonBrightnessUp allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+    }
+}
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+include "dms/cursor.kdl"
