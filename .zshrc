@@ -1,3 +1,4 @@
+cowsay 你好
 # 环境检测与基础设置
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="${EDITOR:-nvim}"
