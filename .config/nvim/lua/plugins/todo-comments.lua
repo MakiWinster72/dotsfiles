@@ -28,8 +28,13 @@ return {
     -- * before: 高亮关键字前的内容（通常是注释符号）
     -- * keyword: 高亮关键字本身
     -- * after: 高亮关键字后的文本
-    --  TODO
-    --  FIXME
+    --  TODO:
+    --  FIX:
+    --  HACK:
+    --  WARN:
+    --  PERF:
+    --  NOTE:
+    --  TEST:
     highlight = {
       multiline = true, -- 支持多行 todo 注释
       multiline_pattern = "^.", -- 匹配多行 todo 注释的 Lua 模式，从关键字所在行开始
@@ -38,7 +43,7 @@ return {
       keyword = "wide", -- "fg"、"bg"、"wide"、"wide_bg"、"wide_fg" 或空。wide 与 wide_bg 同 bg，wide_fg 类似但作用于 fg
       after = "fg", -- "fg" 或 "bg"，为空表示不高亮
       pattern = [[.*<(KEYWORDS)\s*:]], -- 用于高亮的模式（vim 正则）
-      comments_only = true, -- 只在注释中匹配关键字（使用 treesitter）
+      comments_only = false, -- 只在注释中匹配关键字（使用 treesitter）
       max_line_len = 400, -- 忽略长度超过该值的行
       exclude = {}, -- 不进行高亮的文件类型列表
     },

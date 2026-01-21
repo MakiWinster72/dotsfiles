@@ -37,7 +37,7 @@ end)
 if vim.g.neovide then
   -- 窗口透明度（透明度 (opacity)）
   vim.g.neovide_opacity = 0.95
-  vim.g.neovide_normal_opacity = 0.75
+  vim.g.neovide_normal_opacity = 0.95
 
   -- 浮动窗口模糊（浮动模糊 (floating_blur_amount)）
   vim.g.neovide_floating_blur_amount_x = 6.0
