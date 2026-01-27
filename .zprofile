@@ -1,6 +1,6 @@
 export QT_QPA_PLATFORMTHEME="qt6ct"
 export ICON_THEME=Papirus
-# export XDG_CURRENT_DESKTOP=KDE
+export XDG_CURRENT_DESKTOP=KDE
 export KDE_SESSION_VERSION=6
 
 export GTK_IM_MODULE DEFAULT=fcitx
@@ -46,9 +46,9 @@ export FREERDP_COMMAND="xfreerdp3"
 export WINAPPS_SRC_DIR="$HOME/.local/bin/winapps-src"
 export BROSWER="/usr/bin/firefox"
 # XDG_MENU_PREFIX=arch- kbuildsycoca6
-# export http_proxy="http://127.0.0.1:7897"
-# export https_proxy="http://127.0.0.1:7897"
-# export all_proxy="socks5://127.0.0.1:7897"
+export http_proxy="http://127.0.0.1:7897"
+export https_proxy="http://127.0.0.1:7897"
+export all_proxy="socks5://127.0.0.1:7897"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export MANPAGER="sh -c 'col -bx | bat -l man'"
 
