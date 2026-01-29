@@ -135,7 +135,8 @@ spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "clash-verge"
 spawn-at-startup "fcitx5"
 spawn-at-startup "dms" "run"
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+// spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 // spawn-at-startup "XDG_MENU_PREFIX=arch- kbuildsycoca6"
 
 environment {
